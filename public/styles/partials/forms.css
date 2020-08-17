@@ -1,0 +1,52 @@
+
+.select-block label,
+.input-block label
+.textarea-block label{
+    font-size: 1.4rem;
+    color: var(--color-text-complement);
+}
+
+.input-block input,
+.select-block select,
+.textarea-block textarea{
+    width: 100%;
+    height: 5.6rem;
+    margin-top: 0.8rem;
+    border-radius: 0.8rem;
+    background-color: var(--color-input-background);
+    border: 1px solid var(--color-line-in-white); /*Para não ficar aquela borda preta no layout*/
+    outline: 0;                                   /*Tira o efeito visual de seleção*/
+    padding: 0 1.6rem;
+    font: 1.6rem Archivo;
+}
+
+.textarea-block textarea{
+    padding: 1.2rem 1.6rem;
+    height: 16rem;
+    resize: vertical;                             /*Permite o textarea mexer somente na veltical*/
+
+}
+
+.input-block,
+.textarea-block{                                     /*Posicionamento do input é relativo para que o elemento(after) que eu criar sejá criado dentro do input-block e NÃO somente no body*/
+    position: relative;
+}
+
+.input-block:focus-within::after,
+.textarea-block:focus-within::after{                 /*Esse focus-within significa que se algum elemento dentro do meu input-block estiver em "FOCO" (selecionado por exemplo) vai ser colocado (::) um after (Um pseudo Elemento), vai ser criado um elemento html quando esse campo estiver em foco*/
+    content:"";                                   /*OBRIGATORIAMENTE eu preciso colocar um content ( que seria o conteudo de elemento)*/
+
+    width: calc(100% - 3.2rem);                   /*Estou fazendo um calculo com css, pegando 100% do espaço e subtraindo 3.2rem. Mas que largura é essa? Esse calculo está calculando a largura no meu "elemento after". Esse elemento tem largura(width) e altura(height)*/
+    height: 2px;
+    background: var(--color-text-title);          /*E vou colocar uma cor de fundo nesse elemento*/
+    position: absolute;                           /*O "Elemento" var ter um posicionamento absoluto, o que isso significa? E como se colocassem uma folha de papel por cima do layout e o posicionamento do elemento que eu estou criando é absoluto, por isso preciso definir seu posicionamento lateral, superior, inferior. Por ele ser absoluto quando eu defino esses valores, os mesmo se referem a pagina inteira. POR ISSO É IMPORTANTE EU AVISAR QUE O POSICIONAMENTO DO MEU INPUT-BLOCK DEVE SER  -->RELATIVO<-- */
+    left: 1.6rem;
+    right: 1.6rem;
+    bottom: 0;
+}
+
+label small{
+    font-size: 1.2rem;
+    padding: 1.2rem;
+    color: var(--color-smal-info);
+}

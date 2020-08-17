@@ -1,0 +1,63 @@
+:root { /*Quando é colocado :root está se referindo a raiz do html inteiro*/
+    --color-background: #F0F0F7;    /*E esses -- está se referindo a "variaveis css" de cor que depois eu posso usar. Ex:    background-color: var(--color-background); dentro do parenteses vai o nome da variável*/
+    --color-primary-lighter: #9871F5;
+    --color-primary-light: #916BEA;
+    --color-primary: #8257E5;
+    --color-primary-dark: #774DD6;
+    --color-primary-darker: #6842c2;
+    --color-secondary: #04d361;
+    --color-secondary-dark: #04BF58;
+    --color-title-in-primary: #FFFFFF;
+    --color-text-in-primary: #D4C2FF;
+    --color-text-title: #32264D;
+    --color-text-complement: #9C98A6;
+    --color-text-base: #6A6180;
+    --color-line-in-white: #E6E6F0;
+    --color-input-background: #F8F8FC;
+    --color-button-text: #FFFFFF;
+    --color-box-base: #FFFFFF;
+    --color-box-footer: #FAFAFC;
+    --color-small-info: #C1BCCC;
+    /*Tamanho da Fonte padrão: 16px = 100% = 1rem*/ /*A medida rem e % é definido no css em RELAÇÃO ao o que eu coloquei(setado) no :root. já o px não */
+    font-size: 60%; /* controle das medidas rem */ /*Mobile First*/
+}
+
+* {                         /*Tira qualquer conf visual estabelecida pelo navegador, pois esse * significa todos os elementos*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*Quando eu não quero medir o tamanho da caixa pelo conteudo para que a mesma não fique alterando o tamanho de acordo com o conteudo, Eu declaro que eu quero que tudo seja medido pela bordar da caixa*/
+}
+
+html, 
+body{
+    height: 100vh; /*vh é uma unidade de medida para altura. v= view-port h= height (visualisação de altura) e essa unidade de medida quebra em 100 pedacinhos a minha altura da pagina. E nesse comando eu estou ocupando os 100 pedacinhos*/
+}
+
+body{
+    background-color: var(--color-background);
+    display: flex; /*Deixa os elementos dentro da caixa um do lado do outro*/
+    /*flex-wrap: wrap;*/
+    align-items: center; /*Comando para alinhar todos os itens do body ao centro*/
+    justify-content: center;
+}
+
+body,
+input,
+button,
+textarea{
+    font: 500 1.6rem Poppins; /*Essa é uma forma abreviada de escrever as propriedades da font. 500 se refere ao peso da fonte, 1.6 rem se refere ao tamanho da font e Poppins se refere a familia da fonte colocada lá no head. ex a baixo:*/
+    color: var(--color-text-base);
+}
+
+#container{
+    width: 90vw; /*Aqui a largura vai ser de 90 view-port width. Significa que eu estou pegando minha largura e "quebrando" em 100 "pedacinhos" e preenchendo somente 90 deles*/
+    max-width: 700px; /*a tela vai só até 700px*/
+    
+}
+
+@media (min-width: 700px){ /*Se o dispositivo tiver uma largura de minima de 700px (Ou seja, começar nesse valor) vou aumentar a fonte em 62.5%*/
+    :root{
+        font-size: 62.5%; /*todo 1rem vai ser relativo a 10px*/
+    }
+}
+                                                                                                                                

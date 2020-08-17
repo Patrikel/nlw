@@ -1,0 +1,219 @@
+/*Inicio header mobile*/
+#page-study #container{
+    width: 100vw;
+    height: 100vh;
+}
+
+#search-teachers{
+    margin-top: 3.2rem;
+}
+
+#search-teachers label{
+    color: var(--color-text-in-primary);
+}
+
+#search-teachers .select-block{
+    margin-bottom: 1.4rem;
+}
+
+#search-teachers button{
+    width: 100%;
+    height: 5.6rem;
+    background: var(--color-secondary);
+    color: var(--color-button-text);
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;            /*Coloca a mãozinha quando vou para o botão*/
+    font: bold 1.6rem Archivo;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    margin-top: 3.2rem;
+}
+
+#search-teachers button:hover{
+    background: var(--color-secondary-dark);
+}
+
+/*Fim header mobile*/
+
+/*Inicio main mobile*/
+
+#page-study main{                                 /*Deixar tudo alinhado como no header*/
+    margin: 3.2rem auto;
+    width: 90%;
+}
+
+.teacher-item{
+    background-color: var(--color-box-base);
+    border: 1px solid var(--color-line-in-white);
+    border-radius: 0.8rem;
+    margin-top: 2.4rem;
+}
+
+.teacher-item header{                              /*Configuração do header(parte de cima do item) foto do professor <div>nome e materia que o prof ministra</div>*/
+    padding: 3.2rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.teacher-item header img{                                 /*Arredondamento da foto*/
+    width: 8rem;                                   /*Só posso arredondar a foto quando a mesma for um quadrado perfeito*/
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.teacher-item header div{
+    margin-left: 2.4rem;
+}
+
+.teacher-item header div strong{
+    font: bold 2.4rem Archivo;
+    display:block;
+    color: var(--color-text-title);
+}
+
+.teacher-item header div span{
+    font-size: 1.6rem;
+    display: block;                               /*Aqui eu preciso colocar em block para dar um margin-top, pq o display inline não dá*/
+    margin-top: 0.4rem;
+}
+
+.teacher-item > p{                               /*Esse simbolo de maior significa que eu estou pegando SOMENTE o primeiro nivel de p do .teacher-item*/
+    padding: 0 2rem;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+}
+
+.teacher-item footer{
+    padding: 3.2rem 2rem;
+    background-color: var(--color-box-footer);
+    border-top: 1px solid var(--color-line-in-white);
+    margin-top: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.teacher-item footer p{
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: var(--color-text-complement);
+}
+
+.teacher-item footer strong{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    display: block;
+}
+
+.teacher-item footer .button{
+    width: 20rem;
+    height: 5.6rem;
+    background: var(--color-secondary);
+    color: var(--color-button-text);
+    border:0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 1.4rem Archivo;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;                  /*space-evenly é um espaçamento "constante" entre os elementos da minha caixa*/
+
+    text-decoration: none;
+
+    transition: background 0.2s;
+    margin-left: 1.6rem;
+}
+
+.teacher-item footer .button:hover{
+    background-color: var(--color-secondary-dark);
+}
+
+#page-study main .no-results{
+    max-width: 30rem;
+    padding: 12rem auto;
+    text-align: center;
+}
+
+/*Fim main mobile*/
+
+/*Adaptção para desktop*/
+
+@media(min-width: 700px){
+    #page-study #container{
+        max-width: 100vw;
+    }
+
+    .page-header{
+        height: 340px;
+    }
+
+    .page-header .top-bar-container{
+        max-width: 1100px;
+    }
+
+    .page-header .header-content{
+        max-width: 740px;
+        margin: 0 auto;
+        flex: 1 1;                                  /*Eu quero que todo conteudo do meu header seja preenchido, para isso eu posso colocar a propriedade flex 1 1 (já pré-estabelecida)*/
+        padding-bottom: 48px;
+        display: flex;
+        flex-direction: column;                     /*Garantindo que os elemesntos do header-content fiquem um em baixo do outro. Se eu tirar esse comando e o position:absolute lá em baixo verei esse efeito errado. Vamos garantir né*/
+        justify-content: center;
+    }
+
+    .page-header .header-content strong{
+        max-width: 350px;
+    }
+
+    .teacher-item header,
+    .teacher-item footer{                           /*Estou criando um espaçamento nas margins para deixar o conteudo com um espaçamento apadrão*/
+        padding: 32px;
+    }
+
+    #search-teachers{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);      /*com a função repeat() eu não preciso ficar escrevendo o valor de cada coluna. Quando o valor de todas vão ser flexiveis eu uso fr. O 4 se refere a 4 colunas e todas com o tamanho de 1fr*/
+        gap: 16px;
+        position: absolute;
+        bottom: -28px;
+
+    }
+
+    /*Main*/
+
+    #page-study main{
+        padding: 32px 0;
+        max-width: 740px;
+        margin: 0 auto;
+    }
+
+    #search-teachers .select-block{
+        margin-bottom: 0;
+    }
+
+    .teacher-item > p{                              /*Esse simbolo de maior significa que eu estou pegando SOMENTE o primeiro nivel de p do .teacher-item*/
+        padding: 0 32px;
+    }
+
+    .teacher-item footer strong{
+        display: initial;
+        margin-left: 16px;
+    }
+
+    .teacher-item footer button{
+        width: 245px;
+        font-size: 16px;
+        justify-content: center;
+    }
+
+    .teacher-item footer button img{
+        margin-right: 16px;
+    }
+
+}

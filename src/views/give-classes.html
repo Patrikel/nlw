@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!--Lang é um atributo que vai definir a linguagem-->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Proff | Sua plataforma de estudo online</title>
+        <link rel="stylesheet" href="/styles/reset.css">
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="/styles/partials/page-give-classes.css">
+        <link rel="stylesheet" href="/styles/partials/header.css">
+        <link rel="stylesheet" href="/styles/partials/forms.css">
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+    
+        <script src="/scripts/addField.js" defer></script>
+    
+    </head>
+    
+    <body id="page-give-classes">
+
+        <div id="container">
+            <header class="page-header">
+                <div class="top-bar-container">
+                    <a href="/"> <!-- / = index.html, por causa das conf do meu servidor-->
+                        <img src="/images/icons/back.svg" alt="Voltar">
+                    </a>
+
+                    <img src="/images/logo.svg" alt="Prpffy">
+
+                </div>
+
+                <div class="header-content">
+                    <strong>Que incrível que você quer dar aulas</strong>
+                    <p>O primeiro passo, é preencher esse formulário de inscrição</p>
+
+                </div>
+
+            </header>
+
+            <main>
+                <form action="/saveClasses" id="creat-class" method="POST">
+                    <fieldset> <!--fieldset é um agrupamento de dados. Tudo que estiver dentro delo vai ser agrupado. E ele está recebendo uma legenda (Seus dados)-->
+                        <legend>Seus dados</legend>
+
+                        <div class="input-block">
+                            <label for="name">Nome completo</label>
+                            <input name="name" id="name" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="avatar">Link da sua foto <small>(comece com https://)</small></label>
+                            <input name="avatar" id="avatar" type="url" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="whatsapp">Whatsapp <small>(somente números)</small></label>
+                            <input name="Whatsapp" id="whatsapp" type="number" required>
+                        </div>
+
+                        <div class="textarea-block">
+                            <label for="bio">Biografia</label>
+                            <textarea name="bio" id="bio" required></textarea> <!--não se quebra o textarea pq o cursor da escrita fica no meio do campo-->
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset>
+                        <Legend>Sobre a aula</Legend>
+                        <div class="select-block">
+                            <label for="subject">Matéria</label>
+                            <select name="subject" id="subject" required>
+                                <option value="">Selecione uma opção</option>
+                                {%for subject in subjects %} <!--Toda vez que o for do nunjukes roda ele deixa disponivel para mim uma variavel chamada loop(que é um obejeto) e ele deixa disponivel para mim um index, e esse index vai assumir valores de iteração-->
+                                    <option value="{{loop.index}}">{{subject}}</option> <!--Estou varrendo os meus valores para saber se o selecionado é igual ao numero da materia no meu subject-->
+                                {%endfor%}
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="cost">Custo da sua hora/aula
+                                <small>(R$)</small>
+                            </label>
+                            <input name="cost" id="cost" type="number" required>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset id="schedule-items">
+                        <legend>Horários disponiveis
+                            <button type="button" id="add-time">+ Novo Horário</button>
+                        </legend>
+
+                        <div class="schedule-item">
+
+                            <div class="select-block">
+                                <label for="weekday">Dia da semana</label>
+                                <select name="weekday[]" required>  <!--O weekday no nale está com [] pq ele vai receber mais de um valor, e para isso funcionar no JS eu preciso usar essa técnica. Sem o [] ele vai somente com um valor-->
+                                    <option value="">Selecione uma opção</option>
+                                    {%for weekday in weekdays%} <!--o index0 começa apartir do 0. o outro começava apartir do 1 por isso não tem o 0-->
+                                    <option value={{loop.index0}}>{{weekday}}</option>
+                                    {%endfor%}
+                                </select> 
+                            </div>
+
+                            <div class="input-block">
+                                <label for="time_from">Das</label>
+                                <input type="time" name="time_from[]" required>
+                            </div>
+
+                            <div class="input-block">
+                                <label for="time_to">Até</label>
+                                <input type="time" name="time_to[]" required>
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+                </form>
+
+                <footer>
+                    <p>
+                        <img src="/images/icons/warning.svg" alt="Aviso importante">
+                        Importante!<br>
+                        Preencha todos os dados.
+                    </p>
+                    <button type="submit" form="creat-class">Salvar cadastro</button> <!--Esse botão deveria estar dentro do formulario, como todo botão de submit. Mas por questão de layout o botão vai ficar de fora. Mas para ele funcionar eu devo colocar a propriedade form = "creat-class" o form está recebdo o id do meu formulário, informando para ele que é do formulário-->
+                </footer>
+
+            </main>
+        </div>
+    </body>
+</html>
