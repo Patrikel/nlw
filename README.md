@@ -1,4 +1,4 @@
 # nlw
 Plataforma Proffy
 
-Para acessar o site: https://f9b69cc4619f.ngrok.io
+Para acessar o site: https://c1dbd64d0484.ngrok.io 
